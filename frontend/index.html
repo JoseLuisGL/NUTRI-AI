@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriAI con Puter.js</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Incluimos Puter.js -->
-    <script src="https://js.puter.com/v2/"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriAI - Iniciar Sesión</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>🍎 Asistente Nutricional Inteligente</h1>
+  <div class="login-container">
+    <h1>🍎 Bienvenido a NutriAI</h1>
+    <p>Inicia sesión o regístrate para continuar</p>
 
-    <textarea id="inputTexto" placeholder="Escribe aquí tu información (edad, peso, altura, actividad, etc.)"></textarea>
-    <button id="btnEnviar">Obtener recomendación</button>
+    <form id="formLogin">
+      <input type="email" id="email" placeholder="Correo electrónico" required>
+      <input type="password" id="password" placeholder="Contraseña" required>
+      <button type="submit">Iniciar sesión / Registrarse</button>
+    </form>
 
-    <div id="resultado"></div>
+    <p id="mensaje"></p>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="auth.js"></script>
 </body>
 </html>
