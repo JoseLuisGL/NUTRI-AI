@@ -12,14 +12,30 @@
     <button id="btnLogout">Cerrar sesión</button>
   </div>
 
-  <textarea id="inputTexto" placeholder="Escribe aquí tu información (edad, peso, altura, actividad, etc.)"></textarea>
-  <button id="btnEnviar">Obtener recomendación</button>
+  <!-- Resumen de metas -->
+  <div class="metas-container">
+    <h2>🎯 Mis metas</h2>
+    <ul id="metasList"></ul>
+    <input type="text" id="metaInput" placeholder="Agregar nueva meta...">
+    <button id="btnAgregarMeta">Agregar Meta</button>
+  </div>
 
-  <div id="resultado"></div>
+  <!-- Historial de conversación actual -->
+  <div id="chatHistorial" class="chat-historial"></div>
 
-  <!-- Incluir Puter.js -->
+  <!-- Entrada de usuario -->
+  <textarea id="inputTexto" placeholder="Escribe aquí tu información (edad, peso, altura, metas, historial médico, etc.)"></textarea>
+  <button id="btnEnviar">Enviar</button>
+  <button id="btnGuardarChat" disabled>Guardar Chat</button>
+
+  <hr>
+
+  <!-- Historial clínico completo -->
+  <h2>📂 Historial clínico guardado</h2>
+  <div id="historialList" class="historial-list"></div>
+
+  <!-- Puter.js -->
   <script src="https://js.puter.com/v2/"></script>
-  <!-- Script del asistente -->
   <script src="script.js"></script>
 </body>
 </html>
