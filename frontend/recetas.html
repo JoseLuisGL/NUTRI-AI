@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recetas - NutriAI</title>
+<link rel="stylesheet" href="recetas.css">
+</head>
+<body>
+<script src="recetas.js"></script>
+
+<h1>🍳 Biblioteca de Recetas y Planner Semanal</h1>
+
+<div id="filtros">
+    <input type="number" id="filtroCalorias" placeholder="Máx calorías">
+    <input type="text" id="filtroIngredientes" placeholder="Ingredientes">
+    <input type="text" id="filtroAlergias" placeholder="Alergias">
+    <button id="btnBuscarRecetas">Buscar Recetas</button>
+</div>
+
+<h2>Recetas encontradas</h2>
+<div id="recetasContainer"></div>
+
+<h2>Planner Semanal</h2>
+<div id="plannerSemanal">
+    <div class="dia" data-dia="Lunes">Lunes</div>
+    <div class="dia" data-dia="Martes">Martes</div>
+    <div class="dia" data-dia="Miércoles">Miércoles</div>
+    <div class="dia" data-dia="Jueves">Jueves</div>
+    <div class="dia" data-dia="Viernes">Viernes</div>
+    <div class="dia" data-dia="Sábado">Sábado</div>
+    <div class="dia" data-dia="Domingo">Domingo</div>
+</div>
+
+<button id="btnGenerarLista">Generar Lista de Compras</button>
+<div id="listaCompras"></div>
+<div id="botonesControl" style="text-align:center; margin-top:20px;">
+    <button id="btnRegresar">Regresar a la App</button>
+    <button id="btnLogout">Cerrar sesión</button>
+</div>
+
+
+</body>
+</html>

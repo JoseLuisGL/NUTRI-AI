@@ -1,0 +1,212 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+/* Filtros  */
+
+#filtros {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#filtros input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+#filtros button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Contenedores de las recetas */
+
+#recetasContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.receta {
+    width: 180px;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: grab;
+}
+
+.receta img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* El Planner */
+
+#plannerSemanal {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dia {
+    background: #e3f2fd;
+    min-height: 150px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #90caf9;
+    overflow-y: auto;
+}
+
+.dia h3 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.recetaPlanner {
+    background: #fff3e0;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+    position: relative;
+    cursor: default;
+}
+
+.recetaPlanner button {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/*  Lista de compras    */
+
+#listaCompras {
+    background: #fff8e1;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#listaCompras h3 {
+    text-align: center;
+    color: #ff9800;
+    margin-bottom: 15px;
+}
+
+#listaCompras .diaLista {
+    background-color: #ffe0b2;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #bf360c;
+}
+
+#listaCompras .recetaLista {
+    margin-left: 15px;
+    color: #6d4c41;
+}
+
+#listaCompras ul {
+    margin-left: 30px;
+    padding-left: 0;
+}
+
+#listaCompras li {
+    margin-bottom: 3px;
+}
+
+/* Estilos para los botones principales */
+
+#btnGenerarLista {
+  background-color: #4CAF50; /* verde */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 20px auto; /* margen superior e inferior y centrado horizontal */
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: block; /* hace que margin auto funcione para centrar  :v*/
+}
+
+#btnGenerarLista:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+#btnGenerarLista:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#botonesControl button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  margin: 0 10px; /* separación entre botones */
+}
+
+#btnRegresar {
+  background-color: #2196F3; /* azul */
+  color: white;
+}
+
+#btnRegresar:hover {
+  background-color: #1976D2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+#btnRegresar:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#btnLogout {
+  background-color: #f44336; /* rojo */
+  color: white;
+}
+
+#btnLogout:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+#btnLogout:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

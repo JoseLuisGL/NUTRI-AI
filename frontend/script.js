@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const historialListDiv = document.getElementById("historialList");
   const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));
   const btnEnviar = document.getElementById("btnEnviar");
+  const btnRecetas = document.getElementById("btnRecetas");
   const btnGuardar = document.getElementById("btnGuardarChat");
   const inputTexto = document.getElementById("inputTexto");
 
@@ -146,4 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionStorage.removeItem("usuarioActivo");
     window.location.href = "index.html";
   });
+});
+
+
+// ---------------- Ir a recetas ----------------
+btnRecetas.addEventListener("click", () => {
+    window.location.href = "recetas.html";
 });
