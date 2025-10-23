@@ -7,7 +7,10 @@
 <link rel="stylesheet" href="recetas.css">
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 <script src="recetas.js"></script>
+
 
 <h1>🍳 Biblioteca de Recetas y Planner Semanal</h1>
 
@@ -33,6 +36,7 @@
 </div>
 
 <button id="btnGenerarLista">Generar Lista de Compras</button>
+<button id="btnExportarPDF">Exportar Informe PDF</button>
 <div id="listaCompras"></div>
 <div id="botonesControl" style="text-align:center; margin-top:20px;">
     <button id="btnRegresar">Regresar a la App</button>

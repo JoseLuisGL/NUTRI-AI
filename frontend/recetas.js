@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const apiKey = ""; //Comentario mio, es importante generar una key con diferentes cuentas pq cada una tiene 50 creditos
+    const apiKey = "568a9bd2915f4882abf2bf2f96181265"; //Comentario mio, es importante generar una key con diferentes cuentas pq cada una tiene 50 creditos
 
     // Elementos del DOM
     const btnBuscar = document.getElementById("btnBuscarRecetas");
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnGenerarLista = document.getElementById("btnGenerarLista");
     const btnLogout = document.getElementById("btnLogout");
     const btnRegresar = document.getElementById("btnRegresar");
+    const btnExportarPDF = document.getElementById("btnExportarPDF");
 
     btnRegresar.addEventListener("click", () => {
         window.location.href = "app.html";
@@ -170,4 +171,80 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "index.html";
     });
 
+    btnExportarPDF.addEventListener("click", async () => {
+  if (!planner || Object.keys(planner).length === 0) {
+    alert("No hay recetas en el plan semanal para exportar.");
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFontSize(18);
+  doc.text("Informe de Plan Semanal y Lista de Compras", 14, 20);
+
+  doc.setFontSize(12);
+  doc.text("Plan Semanal", 14, 30);
+
+  // Generar tabla del plan semanal
+  const tableData = [];
+  for (const [dia, recetas] of Object.entries(planner)) {
+    if (recetas.length > 0) {
+      tableData.push([dia.toUpperCase(), recetas.map(r => r.title).join(", ")]);
+    } else {
+      tableData.push([dia.toUpperCase(), "—"]);
+    }
+  }
+
+  doc.autoTable({
+    head: [["Día", "Recetas"]],
+    body: tableData,
+    startY: 35,
+    theme: "striped",
+    headStyles: { fillColor: [103, 58, 183] },
+  });
+
+  // Generar lista de compras
+  let y = doc.lastAutoTable.finalY + 10;
+  doc.setFontSize(12);
+  doc.text("Lista de Compras por Día", 14, y);
+
+  y += 5;
+  for (const [dia, recetas] of Object.entries(planner)) {
+    if (recetas.length > 0) {
+      doc.text(`\n${dia.toUpperCase()}`, 14, y);
+      y += 12;
+
+      for (const receta of recetas) {
+        // Obtener detalles de la receta desde Spoonacular
+        const response = await fetch(
+          `https://api.spoonacular.com/recipes/${receta.id}/information?apiKey=` //Aqui poner la key de la API
+        );
+        const data = await response.json();
+
+        doc.setFontSize(11);
+        doc.text(`${receta.title}`, 20, y);
+        y += 8;
+
+        const ingredientes = data.extendedIngredients
+          .map((ing) => `• ${ing.original}`)
+          .join("\n");
+
+        const lineas = doc.splitTextToSize(ingredientes, 170);
+        doc.text(lineas, 25, y);
+        y += lineas.length * 6;
+
+        if (y > 270) {
+          doc.addPage();
+          y = 20;
+        }
+      }
+    }
+  }
+
+  doc.save("Plan_Semanal_y_Lista_Compras.pdf");
 });
+
+
+});
+

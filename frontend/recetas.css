@@ -210,3 +210,30 @@ h1, h2 {
   transform: translateY(1px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+/* Estilo para generar PDF */
+
+#btnExportarPDF {
+  background-color: #673ab7; /* morado elegante */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 20px auto;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+#btnExportarPDF:hover {
+  background-color: #5e35b1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+#btnExportarPDF:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
