@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const formLogin = document.getElementById("formLogin");
   const mensaje = document.getElementById("mensaje");
 
-  // Si hay sesión activa, ir al asistente
+  // Si hay sesion activa, ir a la app
   const sesion = sessionStorage.getItem("usuarioActivo");
   if (sesion) {
     window.location.href = "app.html";

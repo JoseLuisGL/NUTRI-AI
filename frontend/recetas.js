@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const apiKey = "568a9bd2915f4882abf2bf2f96181265"; //Comentario mio, es importante generar una key con diferentes cuentas pq cada una tiene 50 creditos
+    const apiKey = ""; //Comentario mio, es importante generar una key con diferentes cuentas pq cada una tiene 50 creditos
 
     // Elementos del DOM
     const btnBuscar = document.getElementById("btnBuscarRecetas");
@@ -48,6 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem(`planner_${usuarioActivo.email}`)) {
         planner = JSON.parse(localStorage.getItem(`planner_${usuarioActivo.email}`));
     }
+    // Asegurar que el planner siempre tenga todos los días de la semana
+    const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+    diasSemana.forEach(dia => {
+        if (!planner[dia]) planner[dia] = [];
+    });
     mostrarPlanner();
 
     // ---------------- Buscar recetas ----------------
@@ -101,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function mostrarPlanner() {
         plannerDias.forEach(dia => {
             dia.innerHTML = `<h3>${dia.dataset.dia}</h3>` +
-                planner[dia.dataset.dia].map((r, index) => `
+                (planner[dia.dataset.dia] || []).map((r, index) => `
                     <div class="recetaPlanner">
                         ${r.title}
                         <button data-dia="${dia.dataset.dia}" data-index="${index}">x</button>
