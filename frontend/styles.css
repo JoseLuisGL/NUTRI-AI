@@ -45,8 +45,8 @@ button {
 
 .login-container input {
   display: block;
-  width: 100%;
-  margin: 10px 0;
+  width: 95%;
+  margin: 20px 0;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -138,3 +138,109 @@ button {
 .metas-container li {
   margin: 5px 0;
 }
+
+/* ===== Botón hamburguesa ===== */
+.toggle-sidebar {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  font-size: 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-sidebar:hover {
+  background-color: #66bb6a;
+}
+
+/* ===== Sidebar izquierdo ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background-color: #2e7d32;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  transform: translateX(0);
+  z-index: 1000;
+}
+
+/* Estado colapsado */
+.sidebar.active {
+  transform: translateX(-100%);
+}
+
+/* ===== Contenido principal ===== */
+.main-content {
+  margin-left: 280px;
+  padding: 20px;
+  text-align: center;
+  transition: margin-left 0.3s ease;
+}
+
+.toggle-sidebar.active + .sidebar + .main-content {
+  margin-left: 40px; /* cuando el sidebar está oculto */
+}
+
+/* ===== Botones del historial ===== */
+.sidebar h2 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #81c784;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.sidebar .historial-list {
+  text-align: left;
+}
+
+.sidebar .historialBtn {
+  display: block;
+  width: 100%;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .historialBtn:hover {
+  background-color: #66bb6a;
+}
+
+/* ===== Responsividad ===== */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .sidebar.active {
+    transform: translateX(-100%);
+  }
+
+  .toggle-sidebar {
+    left: 10px;
+    top: 10px;
+  }
+}
+

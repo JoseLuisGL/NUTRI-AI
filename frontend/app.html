@@ -7,36 +7,53 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="header">
-    <h1>Asistente Nutricional Inteligente</h1>
-    <button id="btnLogout">Cerrar sesión</button>
+  <!-- Botón para abrir/cerrar el sidebar -->
+  <button id="toggleSidebar" class="toggle-sidebar">☰</button>
+
+  <!-- Sidebar izquierdo -->
+  <aside class="sidebar" id="sidebar">
+    <h2>Historial</h2>
+    <div id="historialList" class="historial-list"></div>
+  </aside>
+
+  <!-- Contenedor principal -->
+  <div class="main-content">
+    <div class="header">
+      <h1>Asistente Nutricional Inteligente</h1>
+      <button id="btnLogout">Cerrar sesión</button>
+    </div>
+
+    <!-- Resumen de metas -->
+    <div class="metas-container">
+      <h2>Mis metas</h2>
+      <ul id="metasList"></ul>
+      <input type="text" id="metaInput" placeholder="Agregar nueva meta...">
+      <button id="btnAgregarMeta">Agregar Meta</button>
+    </div>
+
+    <!-- Historial de conversación actual -->
+    <div id="chatHistorial" class="chat-historial"></div>
+
+    <!-- Entrada de usuario -->
+    <textarea id="inputTexto" placeholder="Escribe aquí tu información (edad, peso, altura, metas, historial médico, etc.)"></textarea>
+    <button id="btnEnviar">Enviar</button>
+    <button id="btnRecetas">Ir a Recetas</button>
+    <button id="btnGuardarChat" disabled>Guardar Chat</button>
   </div>
-
-  <!-- Resumen de metas -->
-  <div class="metas-container">
-    <h2>Mis metas</h2>
-    <ul id="metasList"></ul>
-    <input type="text" id="metaInput" placeholder="Agregar nueva meta...">
-    <button id="btnAgregarMeta">Agregar Meta</button>
-  </div>
-
-  <!-- Historial de conversación actual -->
-  <div id="chatHistorial" class="chat-historial"></div>
-
-  <!-- Entrada de usuario -->
-  <textarea id="inputTexto" placeholder="Escribe aquí tu información (edad, peso, altura, metas, historial médico, etc.)"></textarea>
-  <button id="btnEnviar">Enviar</button>
-  <button id="btnRecetas">Ir a Recetas</button>
-  <button id="btnGuardarChat" disabled>Guardar Chat</button>
-
-  <hr>
-
-  <!-- Historial clínico completo -->
-  <h2>Historial clínico guardado</h2>
-  <div id="historialList" class="historial-list"></div>
 
   <!-- Puter.js -->
   <script src="https://js.puter.com/v2/"></script>
   <script src="script.js"></script>
+
+  <!-- Script del toggle -->
+  <script>
+    const toggleBtn = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      toggleBtn.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
