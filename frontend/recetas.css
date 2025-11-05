@@ -1,239 +1,234 @@
+/* ===== Variables de color ===== */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f2f2f2;
+  --color-text: #1a1a1a;
+  --color-accent: #4caf50;
+  --color-border: #ccc;
+}
+
+body.dark-mode {
+  --color-bg: #1e1f23;
+  --color-bg-secondary: #2a2b32;
+  --color-text: #f5f5f5;
+  --color-accent: #4caf50;
+  --color-border: #3d3e45;
+}
+
+/* ===== Base ===== */
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f9f9f9;
+  font-family: "Inter", Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1, h2 {
-    text-align: center;
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background-color: #1b5e20;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
 }
 
-/* Filtros  */
-
-#filtros {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+.sidebar.active {
+  transform: translateX(-100%);
 }
 
-#filtros input {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+.sidebar h2 {
+  margin-top: 0;
 }
 
-#filtros button {
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
+.sidebar ul {
+  list-style: none;
+  padding: 0;
 }
 
-/* Contenedores de las recetas */
+.sidebar button {
+  width: 100%;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+  background-color: #66bb6a;
+}
+
+/* ===== Botón hamburguesa ===== */
+.toggle-sidebar {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  font-size: 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-sidebar:hover {
+  background-color: #66bb6a;
+}
+
+/* ===== Contenido principal ===== */
+.main-content {
+  margin-left: 280px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.active ~ .main-content {
+  margin-left: 0;
+}
+
+/* ===== Header ===== */
+.header {
+  background-color: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.header h1 {
+  margin-left: 50px;
+}
+
+.header-buttons button {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  font-size: 20px;
+  border-radius: 8px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+/* ===== Filtros ===== */
+.filtros {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+}
+
+.filtros input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.filtros button {
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ===== Recetas ===== */
+.recetas-section h2,
+.planner-section h2 {
+  text-align: center;
+  color: var(--color-accent);
+}
 
 #recetasContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .receta {
-    width: 180px;
-    background: white;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    cursor: grab;
+  width: 200px;
+  background: var(--color-bg-secondary);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .receta img {
-    width: 100%;
-    border-radius: 5px;
+  width: 100%;
+  border-radius: 8px;
 }
 
-/* El Planner */
-
+/* ===== Planner ===== */
 #plannerSemanal {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin: 20px auto;
 }
 
 .dia {
-    background: #e3f2fd;
-    min-height: 150px;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #90caf9;
-    overflow-y: auto;
+  background: var(--color-bg-secondary);
+  background: #66bb6a;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  padding: 10px;
+  min-height: 150px;
 }
 
-.dia h3 {
-    text-align: center;
-    margin-top: 0;
-}
-
-.recetaPlanner {
-    background: #fff3e0;
-    padding: 5px;
-    margin: 5px 0;
-    border-radius: 5px;
-    position: relative;
-    cursor: default;
-}
-
-.recetaPlanner button {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-/*  Lista de compras    */
-
+/* ===== Lista y botones ===== */
 #listaCompras {
-    background: #fff8e1;
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    max-height: 400px;
-    overflow-y: auto;
+  background: var(--color-bg-secondary);
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 20px;
 }
 
-#listaCompras h3 {
-    text-align: center;
-    color: #ff9800;
-    margin-bottom: 15px;
-}
-
-#listaCompras .diaLista {
-    background-color: #ffe0b2;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #bf360c;
-}
-
-#listaCompras .recetaLista {
-    margin-left: 15px;
-    color: #6d4c41;
-}
-
-#listaCompras ul {
-    margin-left: 30px;
-    padding-left: 0;
-}
-
-#listaCompras li {
-    margin-bottom: 3px;
-}
-
-/* Estilos para los botones principales */
-
-#btnGenerarLista {
-  background-color: #4CAF50; /* verde */
-  color: white;
+.acciones button {
+  background-color: var(--color-accent);
   border: none;
-  padding: 12px 20px;
-  margin: 20px auto; /* margen superior e inferior y centrado horizontal */
   border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  display: block; /* hace que margin auto funcione para centrar  :v*/
-}
-
-#btnGenerarLista:hover {
-  background-color: #45a049;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
-
-#btnGenerarLista:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-#botonesControl button {
   padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 8px;
+  color: white;
+  font-weight: 500;
   cursor: pointer;
-  border: none;
-  transition: all 0.3s ease;
-  margin: 0 10px; /* separación entre botones */
+  margin: 10px;
+  transition: background-color 0.3s ease;
 }
 
-#btnRegresar {
-  background-color: #2196F3; /* azul */
-  color: white;
+.acciones button:hover {
+  background-color: #66bb6a;
 }
 
-#btnRegresar:hover {
-  background-color: #1976D2;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
 
-#btnRegresar:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-#btnLogout {
-  background-color: #f44336; /* rojo */
-  color: white;
-}
-
-#btnLogout:hover {
-  background-color: #d32f2f;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
-
-#btnLogout:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-/* Estilo para generar PDF */
-
-#btnExportarPDF {
-  background-color: #673ab7; /* morado elegante */
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 20px auto;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-#btnExportarPDF:hover {
-  background-color: #5e35b1;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
-
-#btnExportarPDF:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  #plannerSemanal {
+    grid-template-columns: 1fr 1fr;
+  }
 }

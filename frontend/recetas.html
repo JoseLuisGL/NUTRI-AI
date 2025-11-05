@@ -1,48 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recetas - NutriAI</title>
-<link rel="stylesheet" href="recetas.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetas - NutriAI</title>
+  <link rel="stylesheet" href="recetas.css">
 </head>
-<body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
-<script src="recetas.js"></script>
+<body class="dark-mode">
+  <!-- Botón hamburguesa -->
+  <button id="toggleSidebar" class="toggle-sidebar">☰</button>
 
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <br><br><br>
+    <h2>Menú</h2>
+    <ul>
+      <li><button id="btnRegresar">← Volver a la App</button></li>
+      <li><button id="btnLogout">Cerrar sesión</button></li>
+    </ul>
+  </aside>
 
-<h1>Biblioteca de Recetas y Planner Semanal</h1>
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <header class="header">
+      <h1>Biblioteca de Recetas y Planner Semanal</h1>
+      <div class="header-buttons">
+        <button id="themeToggle" title="Cambiar tema">🌙</button>
+      </div>
+    </header>
 
-<div id="filtros">
-    <input type="number" id="filtroCalorias" placeholder="Máx calorías">
-    <input type="text" id="filtroIngredientes" placeholder="Ingredientes">
-    <input type="text" id="filtroAlergias" placeholder="Alergias">
-    <button id="btnBuscarRecetas">Buscar Recetas</button>
-</div>
+    <section class="filtros">
+      <input type="number" id="filtroCalorias" placeholder="Máx calorías">
+      <input type="text" id="filtroIngredientes" placeholder="Ingredientes">
+      <input type="text" id="filtroAlergias" placeholder="Alergias">
+      <button id="btnBuscarRecetas">Buscar Recetas</button>
+    </section>
 
-<h2>Recetas encontradas</h2>
-<div id="recetasContainer"></div>
+    <section class="recetas-section">
+      <h2>Recetas encontradas</h2>
+      <div id="recetasContainer"></div>
+    </section>
 
-<h2>Planner Semanal</h2>
-<div id="plannerSemanal">
-    <div class="dia" data-dia="Lunes">Lunes</div>
-    <div class="dia" data-dia="Martes">Martes</div>
-    <div class="dia" data-dia="Miércoles">Miércoles</div>
-    <div class="dia" data-dia="Jueves">Jueves</div>
-    <div class="dia" data-dia="Viernes">Viernes</div>
-    <div class="dia" data-dia="Sábado">Sábado</div>
-    <div class="dia" data-dia="Domingo">Domingo</div>
-</div>
+    <section class="planner-section">
+      <h2>Planner Semanal</h2>
+      <div id="plannerSemanal">
+        <div class="dia" data-dia="Lunes">Lunes</div>
+        <div class="dia" data-dia="Martes">Martes</div>
+        <div class="dia" data-dia="Miércoles">Miércoles</div>
+        <div class="dia" data-dia="Jueves">Jueves</div>
+        <div class="dia" data-dia="Viernes">Viernes</div>
+        <div class="dia" data-dia="Sábado">Sábado</div>
+        <div class="dia" data-dia="Domingo">Domingo</div>
+      </div>
+    </section>
 
-<button id="btnGenerarLista">Generar Lista de Compras</button>
-<button id="btnExportarPDF">Exportar Informe PDF</button>
-<div id="listaCompras"></div>
-<div id="botonesControl" style="text-align:center; margin-top:20px;">
-    <button id="btnRegresar">Regresar a la App</button>
-    <button id="btnLogout">Cerrar sesión</button>
-</div>
+    <section class="acciones">
+      <button id="btnGenerarLista">Generar Lista de Compras</button>
+      <button id="btnExportarPDF">Exportar Informe PDF</button>
+      <div id="listaCompras"></div>
+    </section>
+  </div>
 
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <script src="recetas.js"></script>
+  <script>
+    const toggleBtn = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
 
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      toggleBtn.classList.toggle('active');
+    });
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      themeToggle.textContent = isDark ? '🌙' : '☀️';
+    });
+  </script>
 </body>
 </html>

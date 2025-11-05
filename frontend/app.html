@@ -6,53 +6,72 @@
   <title>NutriAI</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-mode">
   <!-- Botón para abrir/cerrar el sidebar -->
   <button id="toggleSidebar" class="toggle-sidebar">☰</button>
 
   <!-- Sidebar izquierdo -->
   <aside class="sidebar" id="sidebar">
+    <br><br><br>
     <h2>Historial</h2>
-    <div id="historialList" class="historial-list"></div>
+    <ul id="historialList" class="historial-list"></ul>
   </aside>
+
 
   <!-- Contenedor principal -->
   <div class="main-content">
-    <div class="header">
+    <header class="header">
       <h1>Asistente Nutricional Inteligente</h1>
-      <button id="btnLogout">Cerrar sesión</button>
-    </div>
+      <div class="header-buttons">
+        <button id="themeToggle" title="Cambiar tema">🌙</button>
+        <button id="btnLogout">Cerrar sesión</button>
+      </div>
+    </header>
 
-    <!-- Resumen de metas -->
-    <div class="metas-container">
+    <!-- Sección de metas -->
+    <section class="metas-container">
       <h2>Mis metas</h2>
       <ul id="metasList"></ul>
-      <input type="text" id="metaInput" placeholder="Agregar nueva meta...">
-      <button id="btnAgregarMeta">Agregar Meta</button>
+      <div class="meta-input-container">
+        <input type="text" id="metaInput" placeholder="Agregar nueva meta...">
+        <button id="btnAgregarMeta">Agregar Meta</button>
+      </div>
+    </section>
+
+    <!-- Contenedor del chat -->
+    <div class="chat-container">
+      <div id="chatHistorial" class="chat-historial"></div>
+
+      <!-- Entrada fija de texto -->
+      <div class="input-area">
+        <textarea id="inputTexto" placeholder="Escribe aquí tu información (edad, peso, altura, metas, historial médico, etc.)"></textarea>
+        <div class="chat-buttons">
+          <button id="btnEnviar">Enviar</button>
+          <button id="btnRecetas">Ir a Recetas</button>
+          <button id="btnGuardarChat" disabled>Guardar Chat</button>
+        </div>
+      </div>
     </div>
-
-    <!-- Historial de conversación actual -->
-    <div id="chatHistorial" class="chat-historial"></div>
-
-    <!-- Entrada de usuario -->
-    <textarea id="inputTexto" placeholder="Escribe aquí tu información (edad, peso, altura, metas, historial médico, etc.)"></textarea>
-    <button id="btnEnviar">Enviar</button>
-    <button id="btnRecetas">Ir a Recetas</button>
-    <button id="btnGuardarChat" disabled>Guardar Chat</button>
   </div>
 
-  <!-- Puter.js -->
+  <!-- Scripts -->
   <script src="https://js.puter.com/v2/"></script>
   <script src="script.js"></script>
-
-  <!-- Script del toggle -->
   <script>
     const toggleBtn = document.getElementById('toggleSidebar');
     const sidebar = document.getElementById('sidebar');
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
 
     toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('active');
       toggleBtn.classList.toggle('active');
+    });
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      themeToggle.textContent = isDark ? '🌙' : '☀️';
     });
   </script>
 </body>
