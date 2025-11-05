@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---------------- Metas ----------------
   const renderMetas = () => {
     metasList.innerHTML = metas.map((meta, i) => 
-      `<li>${meta} <button class="eliminarMeta" data-index="${i}">❌</button></li>`
+      `<br><li>${meta} <button class="eliminarMeta" data-index="${i}">❌</button></li>`
     ).join("");
   };
 
